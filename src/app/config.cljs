@@ -17,9 +17,9 @@
 (def site
   {:dev-ui "http://localhost:8100/main-fonts.css",
    :release-ui "http://cdn.tiye.me/favored-fonts/main-fonts.css",
-   :cdn-url "http://cdn.tiye.me/composer-workflow/",
-   :cdn-folder "tiye.me:cdn/composer-workflow",
-   :title "Composer",
+   :cdn-url "http://cdn.tiye.me/locales-picker/",
+   :cdn-folder "tiye.me:cdn/locales-picker",
+   :title "Locales",
    :icon "http://cdn.tiye.me/logo/respo.png",
-   :storage-key "composer-workflow",
-   :upload-folder "tiye.me:repo/mvc-works/composer-workflow/"})
+   :storage-key "locales-picker",
+   :upload-folder "tiye.me:repo/chenyong/locales-picker/"})

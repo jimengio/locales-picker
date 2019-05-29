@@ -11,7 +11,9 @@
      :id "mC_GvBP4_", :name "base", :template-id "7Ut3EjsPV", :mock-id "mC_GvBP4_"
      :data {}
      :state {
-      :data {:locales-text "", :result "", :select-text ""}
+      :app {
+       :data {:locales-text "A", :result "B", :select-text "C"}
+      }
      }
     }
    }
@@ -40,13 +42,41 @@
         :children {}
        }
        "j" {
-        :type :button, :layout nil
-        :props {"text" "\"Grab"}
+        :type :box, :layout :row-middle
+        :props {}
         :attrs {}
         :presets #{}
         :style {}
-        :event {"click" ":grab"}
-        :children {}
+        :event {}
+        :children {
+         "T" {
+          :type :button, :layout nil
+          :props {"text" "\"Grab"}
+          :attrs {}
+          :presets #{}
+          :style {}
+          :event {"click" ":grab"}
+          :children {}
+         }
+         "j" {
+          :type :space, :layout nil
+          :props {"width" "8"}
+          :attrs {}
+          :presets #{}
+          :style {}
+          :event {}
+          :children {}
+         }
+         "r" {
+          :type :button, :layout nil
+          :props {"text" "\"Copy"}
+          :attrs {}
+          :presets #{}
+          :style {}
+          :event {"click" ":copy"}
+          :children {}
+         }
+        }
        }
       }
      }
@@ -71,8 +101,8 @@
           :props {"textarea" "true", "value" "#:locales-text"}
           :attrs {"placeholder" "\"locales.edn"}
           :presets #{:expand}
-          :style {}
-          :event {}
+          :style {"font-family" "Source Code Pro, Menlo, monospace"}
+          :event {"input" ":locales"}
           :children {}
          }
          "j" {
@@ -80,8 +110,8 @@
           :props {"textarea" "true", "value" "#:select-text"}
           :attrs {"placeholder" "\"keys"}
           :presets #{:expand}
-          :style {}
-          :event {}
+          :style {"font-family" "Source Code Pro, Menlo, monospace"}
+          :event {"input" ":keys"}
           :children {}
          }
         }
@@ -91,20 +121,11 @@
         :props {"textarea" "true", "value" "#:result"}
         :attrs {"placeholder" "\"result"}
         :presets #{:expand}
-        :style {}
+        :style {"font-family" "Source Code Pro, Menlo, monospace"}
         :event {}
         :children {}
        }
       }
-     }
-     "r" {
-      :type :inspect, :layout nil
-      :props {}
-      :attrs {}
-      :presets #{}
-      :style {}
-      :event {}
-      :children {}
      }
     }
    }

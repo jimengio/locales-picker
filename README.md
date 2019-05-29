@@ -2,7 +2,9 @@
 Locales Picker
 ----
 
-### Usage
+> Small page for selecting locales.
+
+Demo http://repo.tiye.me/chenyong/locales-picker/
 
 ### Workflow
 

@@ -21,7 +21,7 @@
        templates (extract-templates (read-string (inline "composer.edn")))
        view-model (vm/get-view-model store)]
    (div
-    {:style ui/global}
+    {:style (merge ui/global ui/fullscreen ui/column)}
     (render-markup
      (get templates "container")
      {:data view-model,
