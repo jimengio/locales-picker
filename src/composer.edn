@@ -1,0 +1,116 @@
+{
+ :sessions {}
+ :users {
+  "OzQOOvni3" {:id "OzQOOvni3", :name "chen", :nickname "chen", :password "d41d8cd98f00b204e9800998ecf8427e", :avatar nil}
+ }
+ :templates {
+  "7Ut3EjsPV" {
+   :id "7Ut3EjsPV", :name "container", :mock-pointer "mC_GvBP4_", :width "800", :height "600", :sort-key "a"
+   :mocks {
+    "mC_GvBP4_" {
+     :id "mC_GvBP4_", :name "base", :template-id "7Ut3EjsPV", :mock-id "mC_GvBP4_"
+     :data {}
+     :state {
+      :data {:locales-text "", :result "", :select-text ""}
+     }
+    }
+   }
+   :markup {
+    :id "system", :type :box, :layout :column
+    :props {}
+    :attrs {}
+    :presets #{:expand}
+    :style {}
+    :children {
+     "T" {
+      :type :box, :layout :row-parted
+      :props {}
+      :attrs {}
+      :presets #{}
+      :style {"padding" "8px"}
+      :event {}
+      :children {
+       "T" {
+        :type :box, :layout nil
+        :props {}
+        :attrs {}
+        :presets #{}
+        :style {}
+        :event {}
+        :children {}
+       }
+       "j" {
+        :type :button, :layout nil
+        :props {"text" "\"Grab"}
+        :attrs {}
+        :presets #{}
+        :style {}
+        :event {"click" ":grab"}
+        :children {}
+       }
+      }
+     }
+     "j" {
+      :type :box, :layout :row
+      :props {}
+      :attrs {}
+      :presets #{:expand}
+      :style {}
+      :event {}
+      :children {
+       "T" {
+        :type :box, :layout :column
+        :props {}
+        :attrs {}
+        :presets #{:expand}
+        :style {}
+        :event {}
+        :children {
+         "T" {
+          :type :input, :layout nil
+          :props {"textarea" "true", "value" "#:locales-text"}
+          :attrs {"placeholder" "\"locales.edn"}
+          :presets #{:expand}
+          :style {}
+          :event {}
+          :children {}
+         }
+         "j" {
+          :type :input, :layout nil
+          :props {"textarea" "true", "value" "#:select-text"}
+          :attrs {"placeholder" "\"keys"}
+          :presets #{:expand}
+          :style {}
+          :event {}
+          :children {}
+         }
+        }
+       }
+       "j" {
+        :type :input, :layout nil
+        :props {"textarea" "true", "value" "#:result"}
+        :attrs {"placeholder" "\"result"}
+        :presets #{:expand}
+        :style {}
+        :event {}
+        :children {}
+       }
+      }
+     }
+     "r" {
+      :type :inspect, :layout nil
+      :props {}
+      :attrs {}
+      :presets #{}
+      :style {}
+      :event {}
+      :children {}
+     }
+    }
+   }
+  }
+ }
+ :settings {
+  :color-groups {}
+ }
+}
