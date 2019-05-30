@@ -11,16 +11,26 @@
 (def state-container
   {:init (fn [props state] (or state {:locales-text "", :select-text "", :result ""})),
    :update (fn [d! op context options state mutate!]
-     (case op
-       :locales (mutate! (assoc state :locales-text (:value options)))
-       :keys (mutate! (assoc state :select-text (:value options)))
-       :copy (copy! (:result state))
-       :grab
-         (let [locales (:locales (read-string (:locales-text state)))
-               entries (string/split (:select-text state) "\n")
-               chunks (select-keys locales entries)]
-           (mutate! (assoc state :result (write-edn chunks))))
-       (do (println "Unknown op:" op))))})
+     (let [grab! (fn []
+                   (try
+                    (let [locales (:locales (read-string (:locales-text state)))
+                          entries (string/split (:select-text state) "\n")
+                          chunks (select-keys locales entries)]
+                      (mutate! (assoc state :result (write-edn chunks) :error nil)))
+                    (catch
+                     js/Error
+                     e
+                     (js/console.error e)
+                     (mutate! (assoc state :error (str e))))))]
+       (case op
+         :locales (mutate! (assoc state :locales-text (:value options)))
+         :keys (mutate! (assoc state :select-text (:value options)))
+         :copy (copy! (:result state))
+         :grab (grab!)
+         :keydown
+           (let [event (:event options)]
+             (when (and (= 13 (.-keyCode event)) (.-metaKey event)) (grab!)))
+         (do (println "Unknown op:" op)))))})
 
 (def states-manager {"container" state-container})
 
@@ -30,7 +40,7 @@
         state-path (:state-path context)
         mutate! (fn [x] (d! :states [state-path x]))
         this-state (get-in states (conj state-path :data))]
-    (when dev? (println "Action" op param context (pr-str options)))
+    (when dev? (println "Action" op param (pr-str options)))
     (if (contains? states-manager template-name)
       (let [action-handler (get-in states-manager [template-name :update])
             state-fn (get-in states-manager [template-name :init])
@@ -48,8 +58,3 @@
            (d! :submit (:draft state))
            (mutate! (assoc state :draft "")))
        (do (println "Unknown op:" op))))})
-
-(def state-task
-  {:init (fn [props state] (or state {})),
-   :update (fn [d! op context options state mutate!]
-     (case op (:remove (d! :remove (:param options)))))})

@@ -11,7 +11,7 @@
      :id "mC_GvBP4_", :name "base", :template-id "7Ut3EjsPV", :mock-id "mC_GvBP4_"
      :data {}
      :state {
-      :data {:locales-text "A", :result "B", :select-text "C"}
+      :data {:locales-text "A", :result "B", :select-text "C", :error "Failed to parse!"}
      }
     }
    }
@@ -22,62 +22,6 @@
     :presets #{:expand}
     :style {}
     :children {
-     "T" {
-      :type :box, :layout :row-parted
-      :props {}
-      :attrs {}
-      :presets #{}
-      :style {"padding" "8px"}
-      :event {}
-      :children {
-       "T" {
-        :type :box, :layout nil
-        :props {}
-        :attrs {}
-        :presets #{}
-        :style {}
-        :event {}
-        :children {}
-       }
-       "j" {
-        :type :box, :layout :row-middle
-        :props {}
-        :attrs {}
-        :presets #{}
-        :style {}
-        :event {}
-        :children {
-         "T" {
-          :type :button, :layout nil
-          :props {"text" "\"Grab"}
-          :attrs {}
-          :presets #{}
-          :style {}
-          :event {"click" ":grab"}
-          :children {}
-         }
-         "j" {
-          :type :space, :layout nil
-          :props {"width" "8"}
-          :attrs {}
-          :presets #{}
-          :style {}
-          :event {}
-          :children {}
-         }
-         "r" {
-          :type :button, :layout nil
-          :props {"text" "\"Copy"}
-          :attrs {}
-          :presets #{}
-          :style {}
-          :event {"click" ":copy"}
-          :children {}
-         }
-        }
-       }
-      }
-     }
      "j" {
       :type :box, :layout :row
       :props {}
@@ -94,34 +38,119 @@
         :style {}
         :event {}
         :children {
+         "D" {
+          :type :input, :layout nil
+          :props {"textarea" "true", "value" "#:select-text"}
+          :attrs {"placeholder" "~\"key-a\\nkey-b\\n...\""}
+          :presets #{:expand}
+          :style {"font-family" "Source Code Pro, Menlo, monospace"}
+          :event {"input" ":keys", "keydown" ":keydown"}
+          :children {}
+         }
          "T" {
           :type :input, :layout nil
           :props {"textarea" "true", "value" "#:locales-text"}
-          :attrs {"placeholder" "\"locales.edn"}
+          :attrs {"placeholder" "\"EDN data of locales.edn"}
           :presets #{:expand}
-          :style {"font-family" "Source Code Pro, Menlo, monospace"}
+          :style {"font-family" "Source Code Pro, Menlo, monospace", "font-size" "12px", "white-space" "pre"}
           :event {"input" ":locales"}
-          :children {}
-         }
-         "j" {
-          :type :input, :layout nil
-          :props {"textarea" "true", "value" "#:select-text"}
-          :attrs {"placeholder" "\"keys"}
-          :presets #{:expand}
-          :style {"font-family" "Source Code Pro, Menlo, monospace"}
-          :event {"input" ":keys"}
           :children {}
          }
         }
        }
        "j" {
-        :type :input, :layout nil
-        :props {"textarea" "true", "value" "#:result"}
-        :attrs {"placeholder" "\"result"}
+        :type :box, :layout :column
+        :props {}
+        :attrs {}
         :presets #{:expand}
-        :style {"font-family" "Source Code Pro, Menlo, monospace"}
+        :style {}
         :event {}
-        :children {}
+        :children {
+         "D" {
+          :type :box, :layout :row-parted
+          :props {}
+          :attrs {}
+          :presets #{}
+          :style {"padding" "8px"}
+          :event {}
+          :children {
+           "T" {
+            :type :box, :layout :row-middle
+            :props {}
+            :attrs {}
+            :presets #{}
+            :style {}
+            :event {}
+            :children {
+             "T" {
+              :type :button, :layout nil
+              :props {"text" "\"Grab"}
+              :attrs {}
+              :presets #{}
+              :style {}
+              :event {"click" ":grab"}
+              :children {}
+             }
+             "j" {
+              :type :space, :layout nil
+              :props {"width" "8"}
+              :attrs {}
+              :presets #{}
+              :style {}
+              :event {}
+              :children {}
+             }
+             "r" {
+              :type :some, :layout nil
+              :props {"value" "#:error", "kind" ":value"}
+              :attrs {}
+              :presets #{}
+              :style {}
+              :event {}
+              :children {
+               "D" {
+                :type :comment, :layout nil
+                :props {}
+                :attrs {}
+                :presets #{}
+                :style {}
+                :event {}
+                :children {}
+               }
+               "T" {
+                :type :text, :layout nil
+                :props {"value" "#:error"}
+                :attrs {}
+                :presets #{}
+                :style {"color" "red"}
+                :event {}
+                :children {}
+               }
+              }
+             }
+            }
+           }
+           "j" {
+            :type :button, :layout nil
+            :props {"text" "\"Copy"}
+            :attrs {}
+            :presets #{}
+            :style {}
+            :event {"click" ":copy"}
+            :children {}
+           }
+          }
+         }
+         "T" {
+          :type :input, :layout nil
+          :props {"textarea" "true", "value" "#:result"}
+          :attrs {"placeholder" "\"result"}
+          :presets #{:expand}
+          :style {"font-family" "Source Code Pro, Menlo, monospace"}
+          :event {}
+          :children {}
+         }
+        }
        }
       }
      }
@@ -130,6 +159,13 @@
   }
  }
  :settings {
-  :color-groups {}
+  :color-groups {
+   "aKwHDwN2t" {
+    :id "aKwHDwN2t", :name "font"
+    :colors {
+     "yMyC7lWX-" {:id "yMyC7lWX-", :name "red", :color "red"}
+    }
+   }
+  }
  }
 }
