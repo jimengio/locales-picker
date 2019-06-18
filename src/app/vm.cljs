@@ -14,9 +14,20 @@
      (let [grab! (fn []
                    (try
                     (let [locales (:locales (read-string (:locales-text state)))
-                          entries (string/split (:select-text state) "\n")
-                          chunks (select-keys locales entries)]
-                      (mutate! (assoc state :result (write-edn chunks) :error nil)))
+                          entries (->> (string/split (:select-text state) "\n")
+                                       (filter (comp not string/blank?)))
+                          chunks (select-keys locales entries)
+                          missing-keys (->> entries
+                                            (filter (fn [x] (nil? (get locales x)))))]
+                      (mutate!
+                       (assoc
+                        state
+                        :result
+                        (write-edn chunks)
+                        :error
+                        (if (empty? missing-keys)
+                          nil
+                          (str "Missing keys: " (string/join ", " missing-keys))))))
                     (catch
                      js/Error
                      e

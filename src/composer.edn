@@ -19,14 +19,14 @@
     :id "system", :type :box, :layout :column
     :props {}
     :attrs {}
-    :presets #{:expand}
+    :presets #{"yQ3AUPy_N"}
     :style {}
     :children {
      "j" {
       :type :box, :layout :row
       :props {}
       :attrs {}
-      :presets #{:expand}
+      :presets #{"yQ3AUPy_N"}
       :style {}
       :event {}
       :children {
@@ -34,7 +34,7 @@
         :type :box, :layout :column
         :props {}
         :attrs {}
-        :presets #{:expand}
+        :presets #{"yQ3AUPy_N"}
         :style {}
         :event {}
         :children {
@@ -42,7 +42,7 @@
           :type :input, :layout nil
           :props {"textarea" "true", "value" "#:select-text"}
           :attrs {"placeholder" "~\"key-a\\nkey-b\\n...\""}
-          :presets #{:expand}
+          :presets #{"yQ3AUPy_N"}
           :style {"font-family" "Source Code Pro, Menlo, monospace"}
           :event {"input" ":keys", "keydown" ":keydown"}
           :children {}
@@ -51,7 +51,7 @@
           :type :input, :layout nil
           :props {"textarea" "true", "value" "#:locales-text"}
           :attrs {"placeholder" "\"EDN data of locales.edn"}
-          :presets #{:expand}
+          :presets #{"yQ3AUPy_N"}
           :style {"font-family" "Source Code Pro, Menlo, monospace", "font-size" "12px", "white-space" "pre"}
           :event {"input" ":locales"}
           :children {}
@@ -62,7 +62,7 @@
         :type :box, :layout :column
         :props {}
         :attrs {}
-        :presets #{:expand}
+        :presets #{"yQ3AUPy_N"}
         :style {}
         :event {}
         :children {
@@ -145,7 +145,7 @@
           :type :input, :layout nil
           :props {"textarea" "true", "value" "#:result"}
           :attrs {"placeholder" "\"result"}
-          :presets #{:expand}
+          :presets #{"yQ3AUPy_N"}
           :style {"font-family" "Source Code Pro, Menlo, monospace"}
           :event {}
           :children {}
@@ -165,6 +165,12 @@
     :colors {
      "yMyC7lWX-" {:id "yMyC7lWX-", :name "red", :color "red"}
     }
+   }
+  }
+  :presets {
+   "yQ3AUPy_N" {
+    :id "yQ3AUPy_N", :name "expand"
+    :style {:flex 1, :overflow :auto}
    }
   }
  }
