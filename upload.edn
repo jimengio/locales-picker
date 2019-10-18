@@ -3,4 +3,4 @@
  :uploads [{:from "dist/*"
             :to "cdn/locales-picker/"}
            {:from "dist/{index.html,manifest.json}"
-            :to "repo/chenyong/locales-picker/"}]}
+            :to "repo/jimengio/locales-picker/"}]}

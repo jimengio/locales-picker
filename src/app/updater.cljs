@@ -9,4 +9,4 @@
     :result (assoc store :result op-data)
     :missing (assoc store :missing op-data)
     :hydrate-storage op-data
-    (do (js/console.warn "unknown op:" op) store)))
+    (do (js/console.warn "Unknown op:" op) store)))
