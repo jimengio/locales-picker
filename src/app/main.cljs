@@ -1,7 +1,7 @@
 
 (ns app.main
   (:require [respo.core :refer [render! clear-cache! realize-ssr!]]
-            [app.container :refer [comp-container]]
+            [app.comp.container :refer [comp-container]]
             [app.updater :refer [updater]]
             [app.schema :as schema]
             [reel.util :refer [listen-devtools!]]
@@ -15,7 +15,9 @@
   (atom (-> reel-schema/reel (assoc :base schema/store) (assoc :store schema/store))))
 
 (defn dispatch! [op op-data]
-  (when (and config/dev?) (println "Dispatch:" op))
+  (when config/dev?
+    (println "Dispatch:" op)
+    (comment if (not= op :locales) (println op-data)))
   (reset! *reel (reel-updater updater @*reel op op-data)))
 
 (def mount-target (.querySelector js/document ".app"))
@@ -44,3 +46,5 @@
   (clear-cache!)
   (reset! *reel (refresh-reel @*reel schema/store updater))
   (println "Code updated."))
+
+(defn snippets [] (println config/cdn?))
