@@ -19,5 +19,5 @@
    :release-ui "http://cdn.tiye.me/favored-fonts/main-fonts.css",
    :cdn-url "http://cdn.tiye.me/locales-picker/",
    :title "Locales Picker",
-   :icon "http://cdn.tiye.me/logo/mvc-works.png",
+   :icon "http://cdn.tiye.me/logo/jimengio.png",
    :storage-key "locales-picker"})
